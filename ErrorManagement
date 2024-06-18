@@ -1,0 +1,27 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract ErrorHandlingExample {
+
+    uint256 public value;
+
+    // Function to set value with a require statement
+    function setValue(uint256 _value) public {
+        require(_value > 0, "Value must be greater than zero");
+        value = _value;
+    }
+
+    // Function to check if the value is an even number using assert
+    function checkEven() public view returns (bool) {
+        assert(value % 2 == 0); // This will throw an error if value is not even
+        return true;
+    }
+
+    // Function that demonstrates revert statement
+    function revertExample() public {
+        if (value < 10) {
+            revert("Value must be at least 10 to proceed");
+        }
+        // Some logic here that only runs if value >= 10
+    }
+}
